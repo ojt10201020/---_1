@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무명 | 우리의 일상, 내일의 유산</title>
+    <meta
+      name="description"
+      content="한국과 일본의 일상에서 미래유산을 발견하고 기록하는 시민 참여형 문화 아카이브"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand-wrap">
+          <a href="#" class="brand" data-view="home">무명<span>無名</span></a>
+        </div>
+
+        <nav class="main-nav" aria-label="주요 메뉴">
+          <button class="nav-btn active" data-view="home">홈</button>
+          <button class="nav-btn" data-view="archive">기록 아카이브</button>
+          <button class="nav-btn" data-view="map">지도</button>
+          <button class="nav-btn" data-view="monthly">월간 아카이브</button>
+          <button class="nav-btn write-btn" id="openWriteBtn">기록하기</button>
+        </nav>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ko">KR</button>
+          <button class="lang-btn" data-lang="ja">JP</button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section id="homePage" class="page active">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow" data-i18n="eyebrow">무명 · 미래유산 아카이브</p>
+              <h1 data-i18n="heroTitle">오늘의 일상을,<br /><span>내일의 유산으로.</span></h1>
+              <p class="lead" data-i18n="heroText">
+                미래에도 남기고 싶은 문화, 함께 이어 갈 이야기. 한국과 일본의 일상에서 미래유산을 발견하고 기록합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="archive-header-row">
+            <h2 data-i18n="archiveHeading">문화 기록</h2>
+            <span class="count-badge" id="homeCount">0</span>
+          </div>
+
+          <div class="featured-grid" id="featuredGrid"></div>
+        </section>
+
+        <section id="archivePage" class="page">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker" data-i18n="archiveKicker">아카이브</p>
+              <h2 data-i18n="archiveTitle">기록 아카이브</h2>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <input
+              id="searchInput"
+              type="search"
+              data-i18n-placeholder="searchPlaceholder"
+              placeholder="기록을 검색해 보세요"
+            />
+            <select id="countryFilter">
+              <option value="all" data-i18n="allCountries">모든 국가</option>
+              <option value="KR">한국</option>
+              <option value="JP">일본</option>
+            </select>
+            <select id="categoryFilter">
+              <option value="all" data-i18n="allCategories">모든 카테고리</option>
+              <option value="음식" data-i18n="categoryFood">음식</option>
+              <option value="장소" data-i18n="categoryPlace">장소</option>
+              <option value="전통" data-i18n="categoryTradition">전통</option>
+              <option value="일상" data-i18n="categoryDaily">일상</option>
+              <option value="공동체" data-i18n="categoryCommunity">공동체</option>
+              <option value="여행" data-i18n="categoryTravel">여행</option>
+            </select>
+          </div>
+
+          <div id="archiveGrid" class="archive-grid"></div>
+        </section>
+
+        <section id="mapPage" class="page">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker" data-i18n="mapKicker">지도</p>
+              <h2 data-i18n="mapTitle">문화 지도</h2>
+            </div>
+          </div>
+
+          <div class="map-layout">
+            <div id="map"></div>
+            <aside id="mapSidebar" class="map-sidebar"></aside>
+          </div>
+        </section>
+
+        <section id="monthlyPage" class="page">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker" data-i18n="monthlyKicker">이달의 기록</p>
+              <h2 data-i18n="monthlyTitle">월간 아카이브</h2>
+            </div>
+          </div>
+
+          <div id="monthlyGrid" class="monthly-grid"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="brand-footer">무명<span>無名</span></div>
+        <p data-i18n="footerText">우리의 일상, 내일의 유산.</p>
+        <span data-i18n="footerMeta">한국과 일본의 미래유산 기록</span>
+      </footer>
+    </div>
+
+    <div id="writeModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="writeModal"></div>
+      <div class="modal-panel write-panel">
+        <button class="close-btn" type="button" data-close-modal="writeModal" aria-label="닫기">×</button>
+
+        <div class="modal-title-box">
+          <p class="section-kicker" data-i18n="writeKicker">기록하기</p>
+          <h3 data-i18n="writeTitle">새 문화 기록</h3>
+        </div>
+
+        <form id="recordForm" class="record-form">
+          <div class="form-grid two-col">
+            <label>
+              <span data-i18n="nicknameLabel">닉네임</span>
+              <input type="text" name="nickname" maxlength="20" required />
+            </label>
+
+            <label>
+              <span data-i18n="countryLabel">국가</span>
+              <select name="country" required>
+                <option value="KR">한국</option>
+                <option value="JP">일본</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span data-i18n="titleLabel">제목</span>
+            <input type="text" name="title" maxlength="60" required />
+          </label>
+
+          <div class="form-grid two-col">
+            <label>
+              <span data-i18n="regionLabel">지역</span>
+              <input type="text" name="region" maxlength="40" required />
+            </label>
+
+            <label>
+              <span data-i18n="categoryLabel">카테고리</span>
+              <select name="category" required>
+                <option value="음식">음식</option>
+                <option value="장소">장소</option>
+                <option value="전통">전통</option>
+                <option value="일상">일상</option>
+                <option value="공동체">공동체</option>
+                <option value="여행">여행</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span data-i18n="imageLabel">사진</span>
+            <input type="file" name="image" accept="image/*" />
+          </label>
+
+          <div class="chain-box">
+            <div class="mini-map-wrap">
+              <div id="writeMap" aria-label="기록 위치 선택 지도"></div>
+            </div>
+
+            <div class="coord-inputs">
+              <label>
+                <span data-i18n="latitudeLabel">위도</span>
+                <input type="text" name="lat" id="latInput" step="any" readonly />
+              </label>
+              <label>
+                <span data-i18n="longitudeLabel">경도</span>
+                <input type="text" name="lng" id="lngInput" step="any" readonly />
+              </label>
+            </div>
+          </div>
+
+          <label>
+            <span data-i18n="contentLabel">본문</span>
+            <textarea name="content" rows="6" maxlength="1000" required></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="button" class="secondary-btn" data-close-modal="writeModal" data-i18n="cancelBtn">취소</button>
+            <button type="submit" class="primary-btn" data-i18n="submitBtn">기록 등록</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="detailModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="detailModal"></div>
+      <div class="modal-panel detail-panel">
+        <button class="close-btn" type="button" data-close-modal="detailModal" aria-label="닫기">×</button>
+        <div id="detailContent"></div>
+      </div>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
