@@ -1280,6 +1280,68 @@ textarea {
   padding-left: 20px;
 }
 
+.field-help {
+  margin-top: -3px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 400;
+}
+
+.image-preview-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, .7fr);
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.4);
+}
+
+.image-preview-panel > img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 11px;
+  background: rgba(30,27,24,.04);
+}
+
+.image-preview-panel > div {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.detail-location-map {
+  width: 100%;
+  height: 220px;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #e6e9df;
+}
+
+.detail-map-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.detail-image {
+  height: auto;
+  max-height: 520px;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: rgba(30,27,24,.04);
+}
+
 .app-notice {
   position: fixed;
   right: 20px;
@@ -1462,6 +1524,14 @@ textarea {
   .record-review dl > div {
     grid-template-columns: 1fr;
     gap: 2px;
+  }
+
+  .image-preview-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .image-preview-panel > img {
+    max-height: 220px;
   }
 
   .map-write-btn {

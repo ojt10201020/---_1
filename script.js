@@ -58,6 +58,10 @@ const translations = {
     practiceNamePlaceholder: '예: 이웃과 나누는 시장의 아침 인사',
     recordDateLabel: '기록 날짜',
     imageLabel: '사진',
+    imageUploadHelp: 'JPG, PNG, WebP, GIF · 최대 20MB',
+    imagePreviewAlt: '선택한 사진 미리보기',
+    removeSelectedImage: '사진 선택 취소',
+    removeSavedImage: '기존 사진 삭제',
     writeMapLabel: '기록 위치 선택 지도',
     locationSectionTitle: '기록할 장소',
     locationSectionHelp: '주소나 장소명을 검색한 뒤 지도에서 위치를 확인해 주세요.',
@@ -89,7 +93,13 @@ const translations = {
     selectLocation: '장소 선택',
     recordSavedLocal: '이 브라우저에만 임시 저장했습니다. 여러 사람과 공유하려면 Supabase 설정이 필요합니다.',
     recordSavedRemote: '기록이 Supabase에 등록되었습니다.',
+    recordUpdatedLocal: '기록과 사진을 이 브라우저에 저장했습니다.',
+    recordUpdatedRemote: '기록이 Supabase에서 수정되었습니다.',
     recordSaveError: '기록을 저장하지 못했습니다. 입력 내용과 Supabase 설정을 확인해 주세요.',
+    recordUpdateError: '기록을 수정하지 못했습니다. 기존 기록은 변경되지 않았습니다.',
+    imageCleanupWarning: '기록은 저장했지만 이전 사진 파일 정리에 실패했습니다. 운영자에게 알려 주세요.',
+    editRecord: '기록 수정',
+    updateRecord: '기록 수정 내용 저장',
     backendLocalStatus: '현재 이 브라우저에만 저장됩니다 · Supabase 미연결',
     backendRemoteStatus: 'Supabase 공용 아카이브에 연결되었습니다.',
     backendSetupStatus: 'Supabase 연결 설정이 없어 이 브라우저에만 저장됩니다.',
@@ -98,16 +108,21 @@ const translations = {
     interactionError: '요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.',
     locationRequired: '검색 결과를 선택하거나 지도에서 위치를 지정해 주세요.',
     locationCountryMismatch: '선택한 위치가 선택한 국가와 다른 것 같습니다. 위치와 국가를 확인해 주세요.',
-    photoTooLarge: '사진은 5MB 이하만 등록할 수 있습니다.',
+    photoTooLarge: '사진은 20MB 이하만 등록할 수 있습니다.',
     photoTypeInvalid: 'JPG, PNG, WebP 또는 GIF 이미지를 선택해 주세요.',
+    imageInvalid: '이미지 파일을 읽을 수 없습니다. 다른 사진을 선택해 주세요.',
+    imageStoredLocally: '사진을 이 브라우저의 IndexedDB에 저장했습니다. 같은 브라우저에서 다시 방문하면 확인할 수 있습니다.',
+    localImageStorageError: '저장된 사진을 불러오지 못했습니다. 브라우저 저장 공간을 확인해 주세요.',
     reviewBasics: '기본 정보',
     reviewLocation: '위치',
     reviewCriteria: '선택한 기록 기준',
     reviewStory: '문화의 이야기',
     reviewImage: '사진이 첨부되었습니다.',
+    reviewExistingImage: '기존 사진을 유지합니다.',
     reviewNoImage: '첨부 사진 없음',
     saveInProgress: '기록을 저장하고 있습니다…',
     locationAddress: '주소',
+    openMap: '지도에서 위치 열기',
     latitudeLabel: '위도',
     longitudeLabel: '경도',
     criteriaFormTitle: '이 문화와 맞닿은 기준',
@@ -238,6 +253,10 @@ const translations = {
     practiceNamePlaceholder: '例：近所の人と交わす市場の朝の挨拶',
     recordDateLabel: '記録した日',
     imageLabel: '写真',
+    imageUploadHelp: 'JPG、PNG、WebP、GIF · 20MBまで',
+    imagePreviewAlt: '選択した写真のプレビュー',
+    removeSelectedImage: '写真の選択を取り消す',
+    removeSavedImage: '保存済みの写真を削除',
     writeMapLabel: '記録する場所を選ぶ地図',
     locationSectionTitle: '記録する場所',
     locationSectionHelp: '住所や場所の名前を検索し、地図で位置を確認してください。',
@@ -269,7 +288,13 @@ const translations = {
     selectLocation: 'この場所を選ぶ',
     recordSavedLocal: 'このブラウザーにのみ保存しました。ほかの人と共有するにはSupabaseの設定が必要です。',
     recordSavedRemote: '記録をSupabaseに登録しました。',
+    recordUpdatedLocal: '記録と写真をこのブラウザーに保存しました。',
+    recordUpdatedRemote: '記録をSupabaseで更新しました。',
     recordSaveError: '記録を保存できませんでした。入力内容とSupabaseの設定をご確認ください。',
+    recordUpdateError: '記録を更新できませんでした。保存済みの記録は変更されていません。',
+    imageCleanupWarning: '記録は保存されましたが、以前の写真ファイルを削除できませんでした。管理者にお知らせください。',
+    editRecord: '記録を編集',
+    updateRecord: '編集内容を保存',
     backendLocalStatus: 'このブラウザーにのみ保存されます · Supabase未接続',
     backendRemoteStatus: 'Supabaseの共有アーカイブに接続しています。',
     backendSetupStatus: 'Supabaseの接続設定がないため、このブラウザーにのみ保存されます。',
@@ -278,16 +303,21 @@ const translations = {
     interactionError: '処理に失敗しました。しばらくしてからもう一度お試しください。',
     locationRequired: '検索結果を選ぶか、地図上で場所を指定してください。',
     locationCountryMismatch: '選んだ場所が選択中の国と異なる可能性があります。国と場所をご確認ください。',
-    photoTooLarge: '写真は5MB以下のものを選んでください。',
+    photoTooLarge: '写真は20MB以下のものを選んでください。',
     photoTypeInvalid: 'JPG、PNG、WebP、GIF形式の画像を選んでください。',
+    imageInvalid: '画像ファイルを読み込めません。別の写真を選んでください。',
+    imageStoredLocally: '写真をこのブラウザーのIndexedDBに保存しました。同じブラウザーで再度アクセスすると表示されます。',
+    localImageStorageError: '保存した写真を読み込めませんでした。ブラウザーの保存領域をご確認ください。',
     reviewBasics: '基本情報',
     reviewLocation: '場所',
     reviewCriteria: '選んだ記録の視点',
     reviewStory: '文化の物語',
     reviewImage: '写真を添付しました。',
+    reviewExistingImage: '既存の写真をそのまま使います。',
     reviewNoImage: '写真なし',
     saveInProgress: '記録を保存しています…',
     locationAddress: '住所',
+    openMap: '地図で場所を開く',
     latitudeLabel: '緯度',
     longitudeLabel: '経度',
     criteriaFormTitle: 'この文化に近い視点',
@@ -485,10 +515,14 @@ const appState = {
   writeMarker: null,
   wizardStep: 0,
   selectedLocationLabel: '',
+  selectedImagePreviewUrl: null,
+  editingPostId: null,
+  removeExistingImage: false,
   lastGeocodeRequestAt: 0,
   geocodeQueue: Promise.resolve(),
   locationRequestId: 0,
   supabase: null,
+  detailMap: null,
   backendMode: 'local',
   userId: null,
   likedRecordIds: new Set()
@@ -496,8 +530,12 @@ const appState = {
 
 const GEOCODING_ENDPOINT = 'https://nominatim.openstreetmap.org';
 const STORAGE_BUCKET = 'mumyeong-media';
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const MAX_IMAGE_SIZE = 20 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+const IMAGE_DATABASE_NAME = 'mumyeong-image-store-v1';
+const IMAGE_OBJECT_STORE = 'images';
+const imageObjectUrls = new Map();
+let imageDatabasePromise;
 
 function loadRecords() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -515,10 +553,129 @@ function loadRecords() {
   }
 }
 
+function hasRecordPhoto(post) {
+  return Boolean(post.imageKey || (post.image && !post.image.includes('photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80')));
+}
+
+function setImageRemoveButtonLabel(key) {
+  const button = document.getElementById('removeSelectedImageBtn');
+  button.dataset.i18n = key;
+  button.textContent = getText(key);
+}
+
+function showExistingImagePreview(post) {
+  document.getElementById('imagePreview').src = getRecordImage(post);
+  document.getElementById('imagePreviewName').textContent = getText('reviewExistingImage');
+  document.getElementById('imagePreviewPanel').classList.remove('hidden');
+  setImageRemoveButtonLabel('removeSavedImage');
+}
+
 let records = loadRecords();
 
-function saveRecords() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+function saveRecords(sourceRecords = records) {
+  const persistentRecords = sourceRecords.map((record) => {
+    const saved = { ...record };
+    if (saved.image?.startsWith('blob:') || saved.image?.startsWith('data:')) delete saved.image;
+    return saved;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(persistentRecords));
+}
+
+function openImageDatabase() {
+  if (!('indexedDB' in window)) {
+    return Promise.reject(new Error('This browser does not support persistent local image storage.'));
+  }
+  if (!imageDatabasePromise) {
+    imageDatabasePromise = new Promise((resolve, reject) => {
+      const request = indexedDB.open(IMAGE_DATABASE_NAME, 1);
+      request.onupgradeneeded = () => {
+        const database = request.result;
+        if (!database.objectStoreNames.contains(IMAGE_OBJECT_STORE)) {
+          database.createObjectStore(IMAGE_OBJECT_STORE, { keyPath: 'id' });
+        }
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error || new Error('Unable to open local image storage.'));
+      request.onblocked = () => reject(new Error('Local image storage upgrade is blocked by another tab.'));
+    });
+  }
+  return imageDatabasePromise;
+}
+
+async function storeLocalImage(blob, imageKey = `image-${window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`}`) {
+  const database = await openImageDatabase();
+  await new Promise((resolve, reject) => {
+    const transaction = database.transaction(IMAGE_OBJECT_STORE, 'readwrite');
+    transaction.objectStore(IMAGE_OBJECT_STORE).put({
+      id: imageKey,
+      blob,
+      type: blob.type || 'application/octet-stream',
+      updatedAt: new Date().toISOString()
+    });
+    transaction.oncomplete = resolve;
+    transaction.onerror = () => reject(transaction.error || new Error('Unable to save the image.'));
+    transaction.onabort = () => reject(transaction.error || new Error('Image save was cancelled.'));
+  });
+  return imageKey;
+}
+
+async function loadLocalImage(imageKey) {
+  const database = await openImageDatabase();
+  const entry = await new Promise((resolve, reject) => {
+    const request = database.transaction(IMAGE_OBJECT_STORE, 'readonly').objectStore(IMAGE_OBJECT_STORE).get(imageKey);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error || new Error('Unable to load the saved image.'));
+  });
+  return entry?.blob || null;
+}
+
+async function deleteLocalImage(imageKey) {
+  if (!imageKey) return;
+  const database = await openImageDatabase();
+  await new Promise((resolve, reject) => {
+    const transaction = database.transaction(IMAGE_OBJECT_STORE, 'readwrite');
+    transaction.objectStore(IMAGE_OBJECT_STORE).delete(imageKey);
+    transaction.oncomplete = resolve;
+    transaction.onerror = () => reject(transaction.error || new Error('Unable to remove the saved image.'));
+    transaction.onabort = () => reject(transaction.error || new Error('Image removal was cancelled.'));
+  });
+  const objectUrl = imageObjectUrls.get(imageKey);
+  if (objectUrl) URL.revokeObjectURL(objectUrl);
+  imageObjectUrls.delete(imageKey);
+}
+
+function dataUrlToBlob(dataUrl) {
+  const [header, encoded] = dataUrl.split(',', 2);
+  const mimeType = header.match(/data:([^;]+)/)?.[1] || 'application/octet-stream';
+  const binary = atob(encoded);
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
+  return new Blob([bytes], { type: mimeType });
+}
+
+async function hydrateLocalImages() {
+  let migrated = false;
+  for (const record of records) {
+    if (record.imageKey) {
+      const blob = await loadLocalImage(record.imageKey);
+      if (blob) {
+        const existingUrl = imageObjectUrls.get(record.imageKey);
+        if (existingUrl) URL.revokeObjectURL(existingUrl);
+        record.image = URL.createObjectURL(blob);
+        imageObjectUrls.set(record.imageKey, record.image);
+      } else {
+        console.error(`Saved image is missing from local storage: ${record.imageKey}`);
+      }
+    } else if (record.image?.startsWith('data:')) {
+      const imageKey = await storeLocalImage(dataUrlToBlob(record.image));
+      record.imageKey = imageKey;
+      const objectUrl = URL.createObjectURL(await loadLocalImage(imageKey));
+      imageObjectUrls.set(imageKey, objectUrl);
+      record.image = objectUrl;
+      migrated = true;
+    }
+  }
+  if (migrated) saveRecords();
 }
 
 function setStorageStatus(text, state = 'local') {
@@ -1130,10 +1287,20 @@ function renderMap() {
   setTimeout(() => map.invalidateSize(), 180);
 }
 
+function canEditRecord(post) {
+  if (appState.backendMode === 'remote') return post.authorId === appState.userId;
+  if (appState.backendMode !== 'local') return false;
+  return !seedData.some((seed) => seed.id === post.id);
+}
+
 function openDetail(postId, preservedComment = '') {
   appState.selectedPostId = postId;
   const post = records.find((item) => item.id === postId);
   if (!post) return;
+  if (appState.detailMap) {
+    appState.detailMap.remove();
+    appState.detailMap = null;
+  }
 
   const modal = document.getElementById('detailModal');
   modal.classList.remove('hidden');
@@ -1189,6 +1356,10 @@ function openDetail(postId, preservedComment = '') {
     <section class="detail-section">
       <h4>${getText('detailBasics')}</h4>
       <dl>${basicInfo.map(([label, value]) => `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`).join('')}</dl>
+      ${Number.isFinite(Number(post.lat)) && Number.isFinite(Number(post.lng))
+        ? `<div id="detailLocationMap" class="detail-location-map" aria-label="${getText('locationAddress')}"></div>
+          <a class="detail-map-link" href="https://www.openstreetmap.org/?mlat=${Number(post.lat)}&mlon=${Number(post.lng)}#map=17/${Number(post.lat)}/${Number(post.lng)}" target="_blank" rel="noopener noreferrer">${getText('openMap')}</a>`
+        : ''}
     </section>
 
     <section class="detail-section">
@@ -1212,6 +1383,7 @@ function openDetail(postId, preservedComment = '') {
 
     <div class="detail-actions">
       <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${getText('likeBtn')} ${post.likes}</button>
+      ${canEditRecord(post) ? `<button class="action-btn edit-record" type="button" data-post-id="${escapeHtml(post.id)}">${getText('editRecord')}</button>` : ''}
     </div>
 
     <div class="comment-list">
@@ -1232,6 +1404,7 @@ function openDetail(postId, preservedComment = '') {
 
   modal.classList.add('visible');
   modal.setAttribute('aria-hidden', 'false');
+  renderDetailLocationMap(post);
 
   const submitCommentBtn = document.getElementById('submitCommentBtn');
   const commentInput = document.getElementById('commentInput');
@@ -1268,11 +1441,89 @@ function openDetail(postId, preservedComment = '') {
   });
 
   content.querySelector('.like-post')?.addEventListener('click', () => toggleLike(postId));
+  content.querySelector('.edit-record')?.addEventListener('click', () => openRecordEditor(postId));
+}
+
+function openRecordEditor(postId) {
+  const post = records.find((item) => item.id === postId);
+  if (!post || !canEditRecord(post)) return;
+  const form = document.getElementById('recordForm');
+  form.reset();
+  clearImagePreview();
+  appState.editingPostId = postId;
+  appState.removeExistingImage = false;
+  appState.selectedLocationLabel = post.locationLabel || '';
+
+  for (const [field, value] of Object.entries({
+    nickname: post.nickname,
+    title: post.title,
+    content: post.content,
+    region: post.region,
+    country: post.country,
+    category: post.category,
+    practiceName: post.practiceName || '',
+    recordDate: post.recordDate || '',
+    localityNotes: post.localityNotes || '',
+    communityNotes: post.communityNotes || '',
+    everydayNotes: post.everydayNotes || '',
+    descriptionWhat: post.descriptionWhat || '',
+    descriptionWhenWhereHow: post.descriptionWhenWhereHow || '',
+    descriptionParticipants: post.descriptionParticipants || '',
+    descriptionValue: post.descriptionValue || '',
+    descriptionFuture: post.descriptionFuture || ''
+  })) {
+    if (form.elements[field]) form.elements[field].value = value;
+  }
+  for (const criterion of getRecordCriteria(post)) {
+    const checkbox = form.querySelector(`[name="criteria"][value="${criterion}"]`);
+    if (checkbox) checkbox.checked = true;
+  }
+
+  document.getElementById('latInput').value = Number.isFinite(Number(post.lat)) ? post.lat : '';
+  document.getElementById('lngInput').value = Number.isFinite(Number(post.lng)) ? post.lng : '';
+  document.getElementById('selectedLocation').textContent = post.locationLabel
+    ? `${getText('locationSelected')}: ${post.locationLabel}`
+    : getText('locationNotSelected');
+
+  if (hasRecordPhoto(post)) showExistingImagePreview(post);
+  else setImageRemoveButtonLabel('removeSelectedImage');
+
+  closeModal('detailModal');
+  openWriteModal();
+}
+
+function renderDetailLocationMap(post) {
+  const mapElement = document.getElementById('detailLocationMap');
+  if (!mapElement || !window.L) return;
+  const latitude = Number(post.lat);
+  const longitude = Number(post.lng);
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
+
+  appState.detailMap = L.map(mapElement, {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    dragging: false,
+    doubleClickZoom: false,
+    touchZoom: false,
+    attributionControl: true
+  }).setView([latitude, longitude], 16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(appState.detailMap);
+  L.marker([latitude, longitude]).addTo(appState.detailMap)
+    .bindPopup(escapeHtml(post.locationLabel || post.region)).openPopup();
+  setTimeout(() => appState.detailMap?.invalidateSize(), 120);
 }
 
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (!modal) return;
+  if (modalId === 'writeModal' && appState.editingPostId) resetRecordForm();
+  if (modalId === 'detailModal' && appState.detailMap) {
+    appState.detailMap.remove();
+    appState.detailMap = null;
+  }
   modal.classList.remove('visible');
   modal.classList.add('hidden');
   modal.setAttribute('aria-hidden', 'true');
@@ -1314,7 +1565,21 @@ function setSelectedLocation(lat, lng, label, zoom = 15) {
     } else {
       appState.writeMarker.setLatLng([lat, lng]);
     }
+    appState.writeMarker.bindPopup(escapeHtml(appState.selectedLocationLabel));
     appState.writeMap.setView([lat, lng], Math.max(appState.writeMap.getZoom(), zoom), { animate: true });
+  }
+}
+
+function clearSelectedLocation() {
+  appState.locationRequestId += 1;
+  appState.selectedLocationLabel = '';
+  document.getElementById('latInput').value = '';
+  document.getElementById('lngInput').value = '';
+  document.getElementById('selectedLocation').textContent = getText('locationNotSelected');
+  document.getElementById('locationResults').replaceChildren();
+  if (appState.writeMarker && appState.writeMap) {
+    appState.writeMap.removeLayer(appState.writeMarker);
+    appState.writeMarker = null;
   }
 }
 
@@ -1351,8 +1616,8 @@ async function searchLocation() {
     status.textContent = getText('locationSearchPrompt');
     return;
   }
+  clearSelectedLocation();
   status.textContent = getText('locationSearching');
-  resultsNode.replaceChildren();
   const requestId = ++appState.locationRequestId;
 
   try {
@@ -1470,9 +1735,14 @@ function renderRecordReview() {
     <li><strong>${getText(`${criterion}Title`)}</strong><p>${escapeHtml(data.get(`${criterion}Notes`) || '')}</p></li>
   `).join('');
   const image = data.get('image');
+  const editedRecord = appState.editingPostId
+    ? records.find((record) => record.id === appState.editingPostId)
+    : null;
   const imageMarkup = image?.size
     ? `<p>${getText('reviewImage')} ${escapeHtml(image.name)}</p>`
-    : `<p>${getText('reviewNoImage')}</p>`;
+    : editedRecord && hasRecordPhoto(editedRecord) && !appState.removeExistingImage
+      ? `<p>${getText('reviewExistingImage')}</p>`
+      : `<p>${getText('reviewNoImage')}</p>`;
   const rows = [
     [getText('nicknameLabel'), data.get('nickname')],
     [getText('countryLabel'), getCountryLabel(data.get('country'))],
@@ -1506,7 +1776,10 @@ function setWizardStep(step) {
   if (progress) progress.style.width = `${appState.wizardStep * 25}%`;
   document.getElementById('wizardBackBtn').disabled = appState.wizardStep === 0;
   document.getElementById('wizardNextBtn').classList.toggle('hidden', appState.wizardStep === 4);
-  document.getElementById('wizardSubmitBtn').classList.toggle('hidden', appState.wizardStep !== 4);
+  const submitButton = document.getElementById('wizardSubmitBtn');
+  submitButton.classList.toggle('hidden', appState.wizardStep !== 4);
+  submitButton.dataset.i18n = appState.editingPostId ? 'updateRecord' : 'submitBtn';
+  submitButton.textContent = getText(submitButton.dataset.i18n);
   if (appState.wizardStep === 4) renderRecordReview();
   if (appState.wizardStep === 1 && appState.writeMap) {
     setTimeout(() => appState.writeMap.invalidateSize(), 120);
@@ -1585,16 +1858,103 @@ function openWriteModal() {
   }, 100);
 }
 
-async function readFileAsDataUrl(file) {
+function clearImagePreview() {
+  const fileInput = document.getElementById('imageInput');
+  if (fileInput) fileInput.value = '';
+  if (appState.selectedImagePreviewUrl) URL.revokeObjectURL(appState.selectedImagePreviewUrl);
+  appState.selectedImagePreviewUrl = null;
+  document.getElementById('imagePreview').removeAttribute('src');
+  document.getElementById('imagePreviewName').textContent = '';
+  document.getElementById('imagePreviewPanel').classList.add('hidden');
+}
+
+function verifyImageFile(file) {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(reader.error || new Error('Unable to read image file.'));
-    reader.readAsDataURL(file);
+    const image = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    const release = () => URL.revokeObjectURL(objectUrl);
+    image.onload = () => {
+      release();
+      if (image.naturalWidth && image.naturalHeight) resolve();
+      else reject(new Error(getText('imageInvalid')));
+    };
+    image.onerror = () => {
+      release();
+      reject(new Error(getText('imageInvalid')));
+    };
+    image.src = objectUrl;
   });
 }
 
-async function storeRemoteRecord(values) {
+async function handleImageSelection(event) {
+  const [file] = event.target.files || [];
+  if (!file) {
+    clearImagePreview();
+    return;
+  }
+  if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+    clearImagePreview();
+    appState.removeExistingImage = false;
+    const existing = records.find((record) => record.id === appState.editingPostId);
+    if (existing && hasRecordPhoto(existing)) showExistingImagePreview(existing);
+    showNotice(getText('photoTypeInvalid'), 'error');
+    return;
+  }
+  if (file.size > MAX_IMAGE_SIZE) {
+    clearImagePreview();
+    appState.removeExistingImage = false;
+    const existing = records.find((record) => record.id === appState.editingPostId);
+    if (existing && hasRecordPhoto(existing)) showExistingImagePreview(existing);
+    showNotice(getText('photoTooLarge'), 'error');
+    return;
+  }
+  try {
+    await verifyImageFile(file);
+  } catch (error) {
+    clearImagePreview();
+    appState.removeExistingImage = false;
+    const existing = records.find((record) => record.id === appState.editingPostId);
+    if (existing && hasRecordPhoto(existing)) showExistingImagePreview(existing);
+    showNotice(getText('imageInvalid'), 'error');
+    return;
+  }
+  if (event.target.files?.[0] !== file) return;
+  if (appState.selectedImagePreviewUrl) URL.revokeObjectURL(appState.selectedImagePreviewUrl);
+  appState.selectedImagePreviewUrl = URL.createObjectURL(file);
+  appState.removeExistingImage = false;
+  document.getElementById('imagePreview').src = appState.selectedImagePreviewUrl;
+  document.getElementById('imagePreviewName').textContent = `${file.name} · ${(file.size / (1024 * 1024)).toFixed(2)} MB`;
+  document.getElementById('imagePreviewPanel').classList.remove('hidden');
+  setImageRemoveButtonLabel('removeSelectedImage');
+}
+
+function removeImageFromDraft() {
+  const fileInput = document.getElementById('imageInput');
+  const editingRecord = appState.editingPostId
+    ? records.find((record) => record.id === appState.editingPostId)
+    : null;
+  if (hasRecordPhoto(editingRecord || {}) && fileInput.files.length) {
+    clearImagePreview();
+    appState.removeExistingImage = false;
+    showExistingImagePreview(editingRecord);
+    return;
+  }
+  if (hasRecordPhoto(editingRecord || {})) {
+    appState.removeExistingImage = true;
+  }
+  clearImagePreview();
+  setImageRemoveButtonLabel('removeSelectedImage');
+}
+
+function getStorageObjectPath(imageUrl) {
+  if (!imageUrl) return null;
+  const marker = `/storage/v1/object/public/${STORAGE_BUCKET}/`;
+  const index = imageUrl.indexOf(marker);
+  if (index < 0) return null;
+  return decodeURIComponent(imageUrl.slice(index + marker.length));
+}
+
+async function storeRemoteRecord(values, existingRecord = null) {
   const { data: profile, error: profileError } = await appState.supabase
     .from('profiles')
     .upsert({ id: appState.userId, nickname: values.nickname }, { onConflict: 'id' })
@@ -1602,10 +1962,10 @@ async function storeRemoteRecord(values) {
     .single();
   if (profileError) throw profileError;
 
-  let imageUrl = null;
+  let imageUrl = values.removeExistingImage ? null : (existingRecord?.image || null);
   let uploadedPath = null;
   if (values.file?.size) {
-    const extension = values.file.name.split('.').pop()?.toLowerCase() || 'jpg';
+    const extension = ({ 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' })[values.file.type];
     uploadedPath = `${appState.userId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${extension}`;
     const { error: uploadError } = await appState.supabase.storage
       .from(STORAGE_BUCKET)
@@ -1638,7 +1998,10 @@ async function storeRemoteRecord(values) {
     description_value: values.descriptionValue || null,
     description_future: values.descriptionFuture
   };
-  const { data, error } = await appState.supabase.from('records').insert(row).select('*').single();
+  const query = existingRecord
+    ? appState.supabase.from('records').update(row).eq('id', existingRecord.id).eq('author_id', appState.userId)
+    : appState.supabase.from('records').insert(row);
+  const { data, error } = await query.select('*').single();
   if (error) {
     if (uploadedPath) {
       const { error: cleanupError } = await appState.supabase.storage.from(STORAGE_BUCKET).remove([uploadedPath]);
@@ -1646,12 +2009,24 @@ async function storeRemoteRecord(values) {
     }
     throw error;
   }
-  return data;
+  let imageCleanupWarning = false;
+  if (existingRecord && (values.file || values.removeExistingImage)) {
+    const oldPath = getStorageObjectPath(existingRecord.image);
+    if (oldPath) {
+      const { error: cleanupError } = await appState.supabase.storage.from(STORAGE_BUCKET).remove([oldPath]);
+      if (cleanupError) {
+        console.error('Replaced image cleanup failed:', cleanupError);
+        imageCleanupWarning = true;
+      }
+    }
+  }
+  return { row: data, imageCleanupWarning };
 }
 
 function resetRecordForm() {
   const form = document.getElementById('recordForm');
   form.reset();
+  clearImagePreview();
   document.getElementById('latInput').value = '';
   document.getElementById('lngInput').value = '';
   document.getElementById('locationSearchStatus').textContent = '';
@@ -1659,6 +2034,9 @@ function resetRecordForm() {
   document.getElementById('selectedLocation').textContent = getText('locationNotSelected');
   appState.selectedLocationLabel = '';
   appState.locationResults = [];
+  appState.editingPostId = null;
+  appState.removeExistingImage = false;
+  setImageRemoveButtonLabel('removeSelectedImage');
   if (appState.writeMarker && appState.writeMap) {
     appState.writeMap.removeLayer(appState.writeMarker);
     appState.writeMarker = null;
@@ -1687,6 +2065,15 @@ async function handleFormSubmit(event) {
     setWizardStep(0);
     return;
   }
+  if (file?.size) {
+    try {
+      await verifyImageFile(file);
+    } catch (error) {
+      showNotice(getText('imageInvalid'), 'error');
+      setWizardStep(0);
+      return;
+    }
+  }
   const lat = Number(document.getElementById('latInput').value);
   const lng = Number(document.getElementById('lngInput').value);
   if (!Number.isFinite(lat) || !Number.isFinite(lng) || !appState.selectedLocationLabel) {
@@ -1714,38 +2101,90 @@ async function handleFormSubmit(event) {
     descriptionValue: data.get('descriptionValue').trim(),
     descriptionFuture: data.get('descriptionFuture').trim(),
     file: file?.size ? file : null,
+    removeExistingImage: appState.removeExistingImage,
     lat,
     lng
   };
+  const editingIndex = appState.editingPostId
+    ? records.findIndex((record) => record.id === appState.editingPostId)
+    : -1;
+  const existingRecord = editingIndex >= 0 ? records[editingIndex] : null;
 
   const submitButton = document.getElementById('wizardSubmitBtn');
   submitButton.disabled = true;
   showNotice(getText('saveInProgress'), 'working');
   try {
     if (appState.backendMode === 'remote') {
-      const row = await storeRemoteRecord(values);
-      records.unshift(mapDatabaseRecord(row));
+      const { row, imageCleanupWarning } = await storeRemoteRecord(values, existingRecord);
+      const savedRecord = mapDatabaseRecord(row);
+      if (existingRecord) {
+        savedRecord.likes = existingRecord.likes;
+        savedRecord.comments = existingRecord.comments;
+        records[editingIndex] = savedRecord;
+      } else {
+        records.unshift(savedRecord);
+      }
       setStorageStatus(getText('backendRemoteStatus'), 'remote');
-      showNotice(getText('recordSavedRemote'));
+      showNotice(imageCleanupWarning
+        ? getText('imageCleanupWarning')
+        : existingRecord ? getText('recordUpdatedRemote') : getText('recordSavedRemote'),
+      imageCleanupWarning ? 'error' : 'success');
     } else if (appState.backendMode === 'local') {
-      const image = values.file
-        ? await readFileAsDataUrl(values.file)
-        : 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80';
-      const newPost = {
-        id: `post-${Date.now()}`,
-        ...values,
-        file: undefined,
+      const newImageKey = values.file ? await storeLocalImage(values.file) : null;
+      const imageKey = newImageKey || (values.removeExistingImage ? null : existingRecord?.imageKey || null);
+      const image = newImageKey
+        ? URL.createObjectURL(values.file)
+        : values.removeExistingImage
+          ? 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80'
+          : existingRecord?.image || 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80';
+      const recordValues = { ...values };
+      delete recordValues.file;
+      delete recordValues.removeExistingImage;
+      const savedRecord = {
+          ...(existingRecord || {}),
+          id: existingRecord?.id || `post-${Date.now()}`,
+          ...recordValues,
+        imageKey,
         locationLabel: appState.selectedLocationLabel,
         recordDate: values.recordDate || new Date().toISOString().slice(0, 10),
         image,
-        createdAt: new Date().toISOString(),
-        likes: 0,
-        comments: []
+        createdAt: existingRecord?.createdAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        likes: existingRecord?.likes || 0,
+        comments: existingRecord?.comments || [],
+        localOwned: true
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([newPost, ...records]));
-      records.unshift(newPost);
+      if (newImageKey) imageObjectUrls.set(newImageKey, image);
+      const updatedRecords = [...records];
+      if (existingRecord) updatedRecords[editingIndex] = savedRecord;
+      else updatedRecords.unshift(savedRecord);
+      try {
+        saveRecords(updatedRecords);
+      } catch (error) {
+        if (newImageKey) {
+          await deleteLocalImage(newImageKey);
+          URL.revokeObjectURL(image);
+        }
+        throw error;
+      }
+      records = updatedRecords;
+      let imageCleanupWarning = false;
+      if (existingRecord?.imageKey && existingRecord.imageKey !== imageKey) {
+        try {
+          await deleteLocalImage(existingRecord.imageKey);
+        } catch (error) {
+          console.error('Replaced local image cleanup failed:', error);
+          imageCleanupWarning = true;
+        }
+      }
       setStorageStatus(getText('backendLocalStatus'), 'local');
-      showNotice(getText('recordSavedLocal'), 'local');
+      showNotice(imageCleanupWarning
+        ? getText('imageCleanupWarning')
+        : existingRecord
+          ? getText('recordUpdatedLocal')
+          : values.file
+            ? `${getText('recordSavedLocal')} ${getText('imageStoredLocally')}`
+            : getText('recordSavedLocal'), imageCleanupWarning ? 'error' : 'local');
     } else {
       throw new Error('Supabase is configured but is not connected.');
     }
@@ -1755,7 +2194,8 @@ async function handleFormSubmit(event) {
     setActiveView('archive');
   } catch (error) {
     console.error('Record save failed:', error);
-    showNotice(`${getText('recordSaveError')} ${error.message || ''}`.trim(), 'error');
+    const message = existingRecord ? getText('recordUpdateError') : getText('recordSaveError');
+    showNotice(`${message} ${error.message || ''}`.trim(), 'error');
   } finally {
     submitButton.disabled = false;
   }
@@ -1856,6 +2296,8 @@ function bindGlobalEvents() {
   });
 
   document.getElementById('recordForm').addEventListener('submit', handleFormSubmit);
+  document.getElementById('imageInput').addEventListener('change', handleImageSelection);
+  document.getElementById('removeSelectedImageBtn').addEventListener('click', removeImageFromDraft);
   document.getElementById('wizardNextBtn').addEventListener('click', () => {
     if (validateWizardStep(appState.wizardStep)) setWizardStep(appState.wizardStep + 1);
   });
@@ -1868,17 +2310,8 @@ function bindGlobalEvents() {
     }
   });
   document.querySelector('#recordForm [name="country"]').addEventListener('change', () => {
-    appState.locationRequestId += 1;
-    document.getElementById('latInput').value = '';
-    document.getElementById('lngInput').value = '';
-    document.getElementById('locationResults').replaceChildren();
+    clearSelectedLocation();
     document.getElementById('locationSearchStatus').textContent = '';
-    document.getElementById('selectedLocation').textContent = getText('locationNotSelected');
-    appState.selectedLocationLabel = '';
-    if (appState.writeMarker && appState.writeMap) {
-      appState.writeMap.removeLayer(appState.writeMarker);
-      appState.writeMarker = null;
-    }
   });
 
   document.querySelectorAll('[data-close-modal]').forEach((button) => {
@@ -1891,7 +2324,7 @@ function bindGlobalEvents() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   bindGlobalEvents();
   setActiveView('home');
   const recordDateInput = document.getElementById('recordDateInput');
@@ -1901,6 +2334,17 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLanguage('ko');
   setStorageStatus(getText('backendLocalStatus'), 'local');
   renderAll();
+  const config = window.MUMYEONG_SUPABASE_CONFIG;
+  if (!config?.url || !config?.anonKey) {
+    try {
+      await hydrateLocalImages();
+      renderAll();
+    } catch (error) {
+      console.error('Local image hydration failed:', error);
+      setStorageStatus(getText('localImageStorageError'), 'error');
+      showNotice(getText('localImageStorageError'), 'error');
+    }
+  }
   initializeBackend();
 });
 

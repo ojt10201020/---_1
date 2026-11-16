@@ -248,8 +248,16 @@
               </label>
               <label>
                 <span data-i18n="imageLabel">관련 사진 또는 이미지</span>
-                <input type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" />
+                <input type="file" name="image" id="imageInput" accept="image/jpeg,.jpg,.jpeg,image/png,image/webp,.webp,image/gif" />
+                <span id="imageUploadHelp" class="field-help" data-i18n="imageUploadHelp">JPG, PNG, WebP, GIF · 최대 20MB</span>
               </label>
+            </div>
+            <div id="imagePreviewPanel" class="image-preview-panel hidden">
+              <img id="imagePreview" alt="선택한 사진 미리보기" data-i18n-alt="imagePreviewAlt" />
+              <div>
+                <span id="imagePreviewName"></span>
+                <button id="removeSelectedImageBtn" class="secondary-btn" type="button" data-i18n="removeSelectedImage">사진 선택 취소</button>
+              </div>
             </div>
           </section>
 
