@@ -43,7 +43,7 @@
           <button class="nav-btn active" data-view="home" data-i18n="navHome">홈</button>
           <button class="nav-btn" data-view="archive" data-i18n="navArchive">기록 아카이브</button>
           <button class="nav-btn" data-view="map" data-i18n="navMap">지도</button>
-          <button class="nav-btn" data-view="monthly" data-i18n="navMonthly">월간 아카이브</button>
+          <button class="nav-btn" data-view="monthly" data-i18n="navMonthly">이달의 무명</button>
           <button class="nav-btn write-btn" id="openWriteBtn" data-i18n="navWrite">기록하기</button>
         </nav>
 
@@ -150,12 +150,22 @@
         <section id="monthlyPage" class="page">
           <div class="section-head">
             <div>
-              <p class="section-kicker" data-i18n="monthlyKicker">이달의 기록</p>
-              <h2 data-i18n="monthlyTitle">월간 아카이브</h2>
+              <p class="section-kicker" data-i18n="monthlyKicker">MUMYEONG of the Month</p>
+              <h2 data-i18n="monthlyTitle">이달의 무명</h2>
             </div>
           </div>
-
-          <div id="monthlyGrid" class="monthly-grid"></div>
+          <div class="monthly-intro">
+            <p data-i18n="monthlyIntroQuestion">우리가 함께 기록하고, 함께 기억하고 싶은 일상은 무엇인가요?</p>
+            <span data-i18n="monthlyIntroText">매월 무명의 기록 중 미래에 남기고 싶은 일상문화를 함께 선정합니다.</span>
+          </div>
+          <p id="monthlyStatus" class="monthly-status" role="status" aria-live="polite"></p>
+          <div id="monthlyWinner"></div>
+          <h3 class="monthly-subheading" data-i18n="monthlyCandidatesTitle">이번 달의 후보 기록</h3>
+          <div id="monthlyGrid" class="monthly-grid monthly-vote-grid"></div>
+          <section class="monthly-archive-section" aria-labelledby="monthlyArchiveTitle">
+            <h3 id="monthlyArchiveTitle" class="monthly-subheading" data-i18n="monthlyArchiveTitle">지난달의 무명</h3>
+            <div id="monthlyArchiveGrid" class="monthly-grid"></div>
+          </section>
         </section>
       </main>
 

@@ -411,6 +411,31 @@ h1 span {
   backdrop-filter: blur(4px);
 }
 
+.sample-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 9px;
+  border: 1px solid rgba(32, 77, 62, 0.18);
+  border-radius: 999px;
+  background: rgba(32, 77, 62, 0.08);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sample-readonly-note {
+  margin: 18px 0 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(32, 77, 62, 0.06);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .card-body {
   padding: 16px 18px 18px;
   display: flex;
@@ -1064,6 +1089,299 @@ textarea {
   line-height: 1.7;
 }
 
+.monthly-intro {
+  margin: 0 0 18px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 251, 246, 0.72);
+}
+
+.monthly-intro p,
+.monthly-intro span {
+  display: block;
+  margin: 0;
+  line-height: 1.75;
+}
+
+.monthly-intro p {
+  color: var(--accent);
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+}
+
+.monthly-intro span {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.monthly-status {
+  margin: 0 0 26px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--warm);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 251, 246, 0.65);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.monthly-status p {
+  margin: 0;
+}
+
+.monthly-status p + p {
+  margin-top: 5px;
+  color: var(--ink);
+}
+
+.monthly-subheading {
+  margin: 28px 0 14px;
+  color: var(--accent);
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.55rem;
+}
+
+.monthly-vote-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+}
+
+.monthly-vote-card,
+.monthly-winner-card,
+.monthly-archive-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 251, 246, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.monthly-vote-card {
+  min-width: 0;
+  cursor: pointer;
+}
+
+.monthly-record-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.monthly-record-open img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.monthly-record-open:hover img {
+  transform: scale(1.025);
+}
+
+.monthly-record-open > span {
+  display: block;
+  padding: 7px 16px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.monthly-vote-body {
+  padding: 16px 18px 18px;
+}
+
+.monthly-vote-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.monthly-record-title {
+  margin: 8px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.monthly-record-title:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.monthly-vote-body .byline {
+  margin: 0 0 12px;
+}
+
+.monthly-description {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+.monthly-criteria-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.monthly-criterion {
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: rgba(32, 77, 62, 0.06);
+}
+
+.monthly-criterion.community {
+  border-color: #9a6f42;
+  background: rgba(201, 141, 86, 0.09);
+}
+
+.monthly-criterion.everyday {
+  border-color: #7d8f6a;
+  background: rgba(125, 143, 106, 0.09);
+}
+
+.monthly-criterion strong {
+  color: var(--accent);
+  font-size: 0.87rem;
+}
+
+.monthly-criterion p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.monthly-vote-footer,
+.monthly-tally {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.monthly-vote-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.monthly-tally {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.monthly-rank {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.monthly-vote-btn {
+  flex: 0 0 auto;
+}
+
+.monthly-vote-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.monthly-winner-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  margin: 20px 0 28px;
+}
+
+.monthly-winner-card > img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+
+.monthly-winner-card > div {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 10px;
+  padding: 22px;
+}
+
+.monthly-winner-card h3,
+.monthly-winner-card p {
+  margin: 0;
+}
+
+.monthly-winner-card h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.55rem;
+}
+
+.monthly-winner-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.monthly-final-votes {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.monthly-archive-section {
+  margin-top: 34px;
+}
+
+.monthly-archive-card {
+  padding-bottom: 14px;
+}
+
+.monthly-archive-card .monthly-record-open img {
+  height: 170px;
+}
+
+.monthly-archive-copy {
+  display: grid;
+  gap: 6px;
+  padding: 0 14px;
+}
+
+.monthly-archive-copy h4,
+.monthly-archive-copy p {
+  margin: 0;
+}
+
+.monthly-archive-copy h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.monthly-archive-copy p,
+.monthly-archive-copy > span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
 .site-footer {
   display: flex;
   flex-direction: column;
@@ -1471,6 +1789,24 @@ textarea {
 
   .archive-card {
     min-height: 380px;
+  }
+
+  .monthly-winner-card {
+    grid-template-columns: 1fr;
+  }
+
+  .monthly-winner-card > img {
+    height: 220px;
+    min-height: 0;
+  }
+
+  .monthly-vote-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .monthly-vote-btn {
+    width: 100%;
   }
 }
 

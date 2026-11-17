@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f2e9" />
+    <title>무명 | Supabase 데이터 이전</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f2e9;
+        --surface: #fffdf8;
+        --ink: #203b32;
+        --muted: #64746d;
+        --line: #dedfd4;
+        --accent: #315d4d;
+        --accent-dark: #23483a;
+        --warn: #7a5320;
+        --warn-bg: #f8f0df;
+        --danger: #8b3c35;
+        --danger-bg: #fbefed;
+        --success: #286247;
+        --success-bg: #edf6ef;
+        font-family: "Noto Sans KR", "Yu Gothic", Meiryo, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.65;
+      }
+
+      button, input { font: inherit; }
+
+      .shell {
+        width: min(1040px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 64px;
+      }
+
+      .brand {
+        color: var(--accent);
+        font-family: Georgia, "Yu Mincho", serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-decoration: none;
+      }
+
+      .brand span { margin-left: 8px; font-size: .82rem; letter-spacing: .08em; }
+
+      header { margin-bottom: 28px; }
+
+      .eyebrow {
+        margin: 24px 0 5px;
+        color: var(--accent);
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { margin-bottom: 8px; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.25; }
+      h2 { margin-bottom: 14px; font-size: 1.22rem; }
+      h3 { margin-bottom: 5px; font-size: 1rem; }
+      .lead { max-width: 720px; margin-bottom: 0; color: var(--muted); }
+
+      .panel {
+        margin-top: 18px;
+        padding: clamp(18px, 3vw, 28px);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: 0 8px 26px rgb(32 59 50 / 5%);
+      }
+
+      .notice {
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: var(--warn-bg);
+        color: var(--warn);
+        font-size: .93rem;
+      }
+
+      .notice strong { display: block; margin-bottom: 3px; }
+      .notice p:last-child { margin-bottom: 0; }
+
+      .notice.neutral { background: #edf2ed; color: var(--ink); }
+      .notice.error { background: var(--danger-bg); color: var(--danger); }
+      .notice.success { background: var(--success-bg); color: var(--success); }
+
+      .file-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .file-button, .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 16px;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        text-align: center;
+        transition: background .15s ease, transform .15s ease;
+      }
+
+      .file-button:hover, .button:hover:not(:disabled) {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .button.secondary:hover:not(:disabled) { background: #f0f1e9; }
+      .button.danger { border-color: var(--danger); background: var(--danger); }
+      .button:disabled { cursor: not-allowed; opacity: .48; }
+
+      #backupFile { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+      #fileName { color: var(--muted); overflow-wrap: anywhere; }
+      .small { color: var(--muted); font-size: .86rem; }
+      .config-state { margin: 12px 0 0; color: var(--muted); font-size: .9rem; }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .stat {
+        min-height: 96px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: #fbfaf5;
+      }
+
+      .stat strong { display: block; font-size: 1.55rem; line-height: 1.2; }
+      .stat span { display: block; margin-top: 5px; color: var(--muted); font-size: .82rem; }
+
+      .subsection { margin-top: 24px; }
+      .subsection:first-child { margin-top: 0; }
+      .subsection-heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .subsection-heading h3 { margin: 0; }
+
+      .record-list { display: grid; gap: 9px; }
+      .record-card {
+        padding: 13px 15px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+      }
+      .record-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 6px 12px;
+      }
+      .record-title { font-weight: 700; overflow-wrap: anywhere; }
+      .record-id { color: var(--muted); font-family: ui-monospace, Consolas, monospace; font-size: .78rem; }
+      .record-meta { margin: 5px 0 0; color: var(--muted); font-size: .84rem; overflow-wrap: anywhere; }
+      .record-issue { margin: 6px 0 0; color: var(--danger); font-size: .84rem; }
+      .empty { margin: 0; padding: 14px; border-radius: 12px; background: #f5f5ef; color: var(--muted); }
+      .hidden { display: none !important; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+      .progress-wrap { margin-top: 18px; }
+      progress { width: 100%; height: 13px; accent-color: var(--accent); }
+      .status { min-height: 1.6em; margin: 8px 0 0; color: var(--muted); }
+      .status[data-state="error"] { color: var(--danger); }
+      .status[data-state="success"] { color: var(--success); }
+      .status[data-state="working"] { color: var(--accent); }
+
+      .results { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+      .results li { padding: 10px 12px; border-radius: 10px; background: #f5f5ef; overflow-wrap: anywhere; }
+      .results li[data-state="failed"] { background: var(--danger-bg); color: var(--danger); }
+      .results li[data-state="imported"] { background: var(--success-bg); color: var(--success); }
+      .results li[data-state="skipped"] { color: var(--muted); }
+
+      .sql-box {
+        width: 100%;
+        min-height: 145px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #f7f7f1;
+        color: var(--ink);
+        font: .82rem/1.5 ui-monospace, Consolas, monospace;
+        resize: vertical;
+      }
+
+      footer { margin-top: 24px; color: var(--muted); font-size: .82rem; text-align: center; }
+      @media (max-width: 600px) {
+        .shell { width: min(100% - 22px, 1040px); padding-top: 18px; }
+        .panel { border-radius: 14px; }
+        .file-button, .button { width: 100%; }
+        .file-row { align-items: stretch; }
+        #fileName { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header>
+        <a class="brand" href="index.html">무명<span>無名</span></a>
+        <p class="eyebrow">MUMYEONG · DATA IMPORT</p>
+        <h1>기존 기록을 Supabase로 이전하기</h1>
+        <p class="lead">로컬 백업 JSON에서 실제 이용자의 기록과 사진을 확인한 뒤, 선택한 자료만 Supabase에 추가합니다.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="fileHeading">
+        <h2 id="fileHeading">1. 백업 파일 선택</h2>
+        <div class="notice">
+          <strong>이전 전 확인해 주세요</strong>
+          <p>파일 선택과 미리보기는 읽기만 수행합니다. Supabase 인증·업로드·게시물 등록은 아래의 <b>이전 시작</b> 버튼을 누른 경우에만 진행됩니다.</p>
+          <p>원본 작성자의 Supabase 사용자 ID는 백업에 없으므로, 이전된 게시물은 이번 도구에서 사용하는 익명 인증 계정이 소유합니다. 게시물에 표시되는 기존 닉네임은 유지됩니다. 기존 댓글은 작성자 연결이 불가능해 이전하지 않고, 기존 공감 수만으로 사용자별 공감 기록을 만들지 않습니다.</p>
+        </div>
+        <div class="file-row">
+          <label class="file-button" for="backupFile">JSON 백업 선택</label>
+          <input id="backupFile" type="file" accept=".json,application/json" />
+          <span id="fileName" class="small">선택된 파일 없음</span>
+        </div>
+        <p id="configState" class="config-state" role="status">Supabase 설정을 확인하고 있습니다…</p>
+        <p id="loadStatus" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="previewPanel" class="panel hidden" aria-labelledby="previewHeading">
+        <h2 id="previewHeading">2. 이전 대상 미리보기</h2>
+        <div class="stats" aria-label="백업 데이터 요약">
+          <div class="stat"><strong id="totalRecords">0</strong><span>전체 게시물</span></div>
+          <div class="stat"><strong id="sampleRecords">0</strong><span>제외되는 샘플</span></div>
+          <div class="stat"><strong id="eligibleRecords">0</strong><span>이전 가능한 실제 기록</span></div>
+          <div class="stat"><strong id="unknownRecords">0</strong><span>판별 불확실 · 이전 제외</span></div>
+          <div class="stat"><strong id="allImages">0</strong><span>백업 사진 파일</span></div>
+          <div class="stat"><strong id="linkedImages">0</strong><span>이전 대상의 사진 데이터</span></div>
+          <div class="stat"><strong id="orphanImages">0</strong><span>게시물과 연결되지 않은 사진</span></div>
+          <div class="stat"><strong id="invalidRecords">0</strong><span>사전 검증 실패</span></div>
+        </div>
+        <p id="backupSummaryNote" class="small"></p>
+        <div class="subsection">
+          <div class="subsection-heading">
+            <h3>이전 대상 실제 기록</h3>
+            <span class="small">게시물 미리보기는 최대 100개까지 표시합니다.</span>
+          </div>
+          <div id="eligiblePreview" class="record-list"></div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-heading"><h3>검증 실패 기록 · 이전 제외</h3></div>
+          <div id="invalidPreview" class="record-list"></div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-heading">
+            <h3>분류가 불확실한 기록</h3>
+            <span class="small">자동 이전하지 않습니다.</span>
+          </div>
+          <div id="unknownPreview" class="record-list"></div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-heading"><h3>제외되는 샘플 기록</h3></div>
+          <div id="samplePreview" class="record-list"></div>
+        </div>
+        <div class="actions">
+          <button id="startImport" class="button" type="button" disabled>이전 시작</button>
+          <button id="clearFile" class="button secondary" type="button">선택 취소</button>
+        </div>
+        <div class="progress-wrap">
+          <progress id="importProgress" max="100" value="0" aria-label="이전 진행률"></progress>
+          <p id="importStatus" class="status" role="status" aria-live="polite">실제 업로드는 아직 시작되지 않았습니다.</p>
+        </div>
+      </section>
+
+      <section id="resultPanel" class="panel hidden" aria-labelledby="resultHeading">
+        <h2 id="resultHeading">3. 이전 결과</h2>
+        <div class="stats">
+          <div class="stat"><strong id="importedCount">0</strong><span>게시물 등록 성공</span></div>
+          <div class="stat"><strong id="skippedCount">0</strong><span>이미 존재해 건너뜀</span></div>
+          <div class="stat"><strong id="failedCount">0</strong><span>실패</span></div>
+          <div class="stat"><strong id="uploadedImageCount">0</strong><span>새로 업로드한 사진 파일</span></div>
+          <div class="stat"><strong id="failedImageCount">0</strong><span>사진 처리 실패</span></div>
+        </div>
+        <ul id="resultList" class="results"></ul>
+        <div class="actions">
+          <button id="downloadReport" class="button secondary" type="button" disabled>이전 결과 보고서 다운로드</button>
+        </div>
+        <div class="subsection">
+          <h3>Supabase SQL Editor 확인 쿼리</h3>
+          <p class="small">성공한 게시물 UUID만 조회합니다. 결과가 없으면 이전 보고서의 실패 원인과 프로젝트 연결 상태를 확인해 주세요.</p>
+          <textarea id="verificationSql" class="sql-box" readonly aria-label="이전 확인 SQL"></textarea>
+        </div>
+      </section>
+
+      <footer>
+        이 도구는 선택된 레코드만 추가하며 기존 localStorage, IndexedDB, Supabase 행과 Storage 객체를 삭제하거나 덮어쓰지 않습니다.
+      </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-import.js"></script>
+  </body>
+</html>

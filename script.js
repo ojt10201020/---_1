@@ -8,7 +8,7 @@ const translations = {
     navHome: '홈',
     navArchive: '기록 아카이브',
     navMap: '지도',
-    navMonthly: '월간 아카이브',
+    navMonthly: '이달의 무명',
     navWrite: '기록하기',
     eyebrow: '무명 · 미래유산 아카이브',
     heroTitle: '오늘의 일상을,<br /><span>내일의 유산으로.</span>',
@@ -28,8 +28,39 @@ const translations = {
     archiveTitle: '기록 아카이브',
     mapKicker: '지도',
     mapTitle: '문화 지도',
-    monthlyKicker: '이달의 기록',
-    monthlyTitle: '월간 아카이브',
+    monthlyKicker: 'MUMYEONG of the Month',
+    monthlyTitle: '이달의 무명',
+    monthlyIntroQuestion: '우리가 함께 기록하고, 함께 기억하고 싶은 일상은 무엇인가요?',
+    monthlyIntroText: '매월 무명의 기록 중 미래에 남기고 싶은 일상문화를 함께 선정합니다.',
+    monthlyCandidatesTitle: '이번 달의 후보 기록',
+    monthlyArchiveTitle: '지난달의 무명',
+    monthlyCommunityNotice: '이용자 투표로 선정되는 무명 커뮤니티의 기록입니다. 국가나 공식 기관이 지정한 무형문화유산이 아닙니다.',
+    monthlyLocalNotice: '후보 기록은 볼 수 있지만 공동 투표는 아직 사용할 수 없습니다. 실제 투표에는 Supabase 연결과 월간 투표 데이터베이스 설정이 필요합니다.',
+    monthlySchemaNotice: '월간 투표 데이터베이스가 아직 준비되지 않았습니다. Supabase에서 monthly-voting-migration.sql을 실행해 주세요.',
+    monthlyNoPeriod: '이번 달 투표 기간이 아직 설정되지 않았습니다. 후보 기록은 확인할 수 있습니다.',
+    monthlyVotingOpen: '투표 진행 중 · {end}에 마감합니다. 한 사람당 한 표를 남길 수 있습니다.',
+    monthlyVotingNotOpen: '이번 달 투표 기간이 아닙니다.',
+    monthlyVotingClosed: '투표가 마감되었습니다. 최종 결과를 확인하고 있습니다.',
+    monthlyFinalized: '이번 달의 선정 기록이 확정되었습니다.',
+    monthlyNoCandidates: '아직 후보로 볼 수 있는 기록이 없습니다.',
+    monthlyNoArchive: '아직 선정이 확정된 월간 기록이 없습니다.',
+    monthlyVotes: '표',
+    monthlyVotesUnavailable: '공동 투표 연결 후 표시',
+    monthlyRank: '위',
+    monthlyVote: '이 기록에 투표',
+    monthlyVoteUnavailable: '공동 투표 준비 중',
+    monthlyVoted: '내가 투표한 기록',
+    monthlyVoteClosed: '투표 마감',
+    monthlyVoteDone: '이번 달 투표 완료',
+    monthlyVoteNotOpen: '투표 기간 외',
+    monthlyVoteInProgress: '투표 저장 중…',
+    monthlyVotingError: '투표를 저장하지 못했습니다. 연결 상태를 확인한 뒤 다시 시도해 주세요.',
+    monthlyAlreadyVoted: '이번 달 투표는 이미 완료했습니다. 같은 달에는 한 번만 투표할 수 있습니다.',
+    monthlyVoteSaved: '투표를 저장했습니다. 함께 기억할 일상을 골라 주셔서 고맙습니다.',
+    monthlySelected: '커뮤니티 선정 기록',
+    monthlyFinalVotes: '최종 득표',
+    monthlyOpenRecord: '기록 자세히 보기',
+    monthlyNoReason: '이 기준에 대한 설명은 아직 없습니다.',
     footerText: '우리의 일상, 내일의 유산.',
     footerMeta: '한국과 일본의 생활문화 기록',
     searchPlaceholder: '기록을 검색해 보세요',
@@ -160,6 +191,8 @@ const translations = {
     homeTitle: '최근 기록',
     latestEmpty: '아직 기록이 없습니다.',
     viewMore: '더 보기',
+    sampleRecord: '샘플 기록',
+    sampleReadOnly: '열람용 샘플 기록입니다. 공감과 댓글은 실제 이용자 참여로 집계되지 않습니다.',
     monthLabel: '월간 기록',
     noResults: '검색 결과가 없습니다.',
     closeLabel: '닫기',
@@ -203,7 +236,7 @@ const translations = {
     navHome: 'ホーム',
     navArchive: '記録アーカイブ',
     navMap: '地図',
-    navMonthly: '月間アーカイブ',
+    navMonthly: '今月の無名',
     navWrite: '記録する',
     eyebrow: '無名 · 未来遺産アーカイブ',
     heroTitle: '今日の暮らしを、<br /><span>明日の遺産へ。</span>',
@@ -223,8 +256,39 @@ const translations = {
     archiveTitle: '記録アーカイブ',
     mapKicker: '地図',
     mapTitle: '文化地図',
-    monthlyKicker: '今月の記録',
-    monthlyTitle: '月間アーカイブ',
+    monthlyKicker: 'MUMYEONG of the Month',
+    monthlyTitle: '今月の無名',
+    monthlyIntroQuestion: '一緒に記録し、これからも一緒に覚えていたい日常は何でしょうか？',
+    monthlyIntroText: '毎月、無名に寄せられた記録から、未来に残したい暮らしの文化をみんなで選びます。',
+    monthlyCandidatesTitle: '今月の候補記録',
+    monthlyArchiveTitle: 'これまでの選定記録',
+    monthlyCommunityNotice: '利用者の投票で選ばれる、無名コミュニティによる記録です。国や公的機関が指定する無形文化遺産ではありません。',
+    monthlyLocalNotice: '候補記録はご覧いただけますが、共同投票はまだ利用できません。実際の投票にはSupabase接続と月間投票データベースの設定が必要です。',
+    monthlySchemaNotice: '月間投票のデータベースがまだ準備されていません。Supabaseでmonthly-voting-migration.sqlを実行してください。',
+    monthlyNoPeriod: '今月の投票期間はまだ設定されていません。候補記録はご覧いただけます。',
+    monthlyVotingOpen: '投票受付中 · {end}に締め切ります。一人一票を投じられます。',
+    monthlyVotingNotOpen: '現在は今月の投票期間ではありません。',
+    monthlyVotingClosed: '投票を締め切りました。最終結果を確認しています。',
+    monthlyFinalized: '今月の選定記録が確定しました。',
+    monthlyNoCandidates: '候補として表示できる記録はまだありません。',
+    monthlyNoArchive: '選定が確定した月間記録はまだありません。',
+    monthlyVotes: '票',
+    monthlyVotesUnavailable: '共同投票の接続後に表示',
+    monthlyRank: '位',
+    monthlyVote: 'この記録に投票',
+    monthlyVoteUnavailable: '共同投票の準備中',
+    monthlyVoted: '投票した記録',
+    monthlyVoteClosed: '投票終了',
+    monthlyVoteDone: '今月の投票は完了',
+    monthlyVoteNotOpen: '投票期間外',
+    monthlyVoteInProgress: '投票を保存しています…',
+    monthlyVotingError: '投票を保存できませんでした。接続を確認して、もう一度お試しください。',
+    monthlyAlreadyVoted: '今月の投票は完了しています。同じ月に投票できるのは一度だけです。',
+    monthlyVoteSaved: '投票を保存しました。一緒に覚えていたい日常を選んでくださり、ありがとうございます。',
+    monthlySelected: 'コミュニティ選定記録',
+    monthlyFinalVotes: '最終得票数',
+    monthlyOpenRecord: '記録の詳細を見る',
+    monthlyNoReason: 'この視点についての説明はまだありません。',
     footerText: '私たちの日常、明日の遺産。',
     footerMeta: '韓国と日本の暮らしの文化を記録',
     searchPlaceholder: '記録を検索',
@@ -355,6 +419,8 @@ const translations = {
     homeTitle: '最近の記録',
     latestEmpty: 'まだ記録がありません。',
     viewMore: 'もっと見る',
+    sampleRecord: 'サンプル記録',
+    sampleReadOnly: '閲覧用のサンプル記録です。共感やコメントは実際の利用者参加として集計されません。',
     monthLabel: '月間記録',
     noResults: '検索結果がありません。',
     closeLabel: '閉じる',
@@ -499,6 +565,8 @@ const seedData = [
   }
 ];
 
+const SAMPLE_POST_IDS = new Set(seedData.map((post) => post.id));
+
 const appState = {
   lang: 'ko',
   activeView: 'home',
@@ -522,10 +590,19 @@ const appState = {
   geocodeQueue: Promise.resolve(),
   locationRequestId: 0,
   supabase: null,
+  publishedRecordIds: new Set(),
   detailMap: null,
   backendMode: 'local',
   userId: null,
-  likedRecordIds: new Set()
+  likedRecordIds: new Set(),
+  monthlyVoting: {
+    periods: [],
+    tallies: {},
+    userVotes: {},
+    schemaReady: false,
+    loadError: false,
+    submitting: false
+  }
 };
 
 const GEOCODING_ENDPOINT = 'https://nominatim.openstreetmap.org';
@@ -773,16 +850,82 @@ async function initializeBackend() {
     if (commentsError) throw commentsError;
     if (likesError) throw likesError;
 
-    records = (rows || []).map((row) => mapDatabaseRecord(row, comments || [], likes || []));
+    const databaseRecords = (rows || []).map((row) => mapDatabaseRecord(row, comments || [], likes || []));
+    appState.publishedRecordIds = new Set(
+      databaseRecords.filter((post) => !isSampleRecord(post)).map((post) => post.id)
+    );
+    records = mergeSampleRecords(databaseRecords);
     appState.likedRecordIds = new Set((likes || []).filter((like) => like.user_id === user.id).map((like) => like.record_id));
     appState.backendMode = 'remote';
     setStorageStatus(getText('backendRemoteStatus'), 'remote');
+    await loadMonthlyVotingData();
     renderAll();
   } catch (error) {
     console.error('Supabase initialization failed:', error);
     appState.backendMode = 'error';
     setStorageStatus(getText('backendConnectError'), 'error');
     showNotice(getText('backendConnectError'), 'error');
+  }
+}
+
+function getCurrentMonthKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
+}
+
+async function loadMonthlyVotingData() {
+  const voting = appState.monthlyVoting;
+  voting.periods = [];
+  voting.tallies = {};
+  voting.userVotes = {};
+  voting.schemaReady = false;
+  voting.loadError = false;
+
+  if (appState.backendMode !== 'remote') return;
+
+  try {
+    const fetchPeriods = async () => {
+      const { data, error } = await appState.supabase
+        .from('monthly_vote_periods')
+        .select('month_start,opens_at,closes_at,selected_record_id,finalized_at')
+        .order('month_start', { ascending: false });
+      if (error) throw error;
+      return data || [];
+    };
+
+    voting.periods = await fetchPeriods();
+    let finalizedPeriod = false;
+    for (const period of voting.periods) {
+      if (!period.finalized_at && Date.now() >= new Date(period.closes_at).getTime()) {
+        const { error } = await appState.supabase.rpc('finalize_monthly_vote', {
+          p_month_start: period.month_start
+        });
+        if (error) throw error;
+        finalizedPeriod = true;
+      }
+    }
+    if (finalizedPeriod) voting.periods = await fetchPeriods();
+
+    const tallyResults = await Promise.all(voting.periods.map(async (period) => {
+      const { data, error } = await appState.supabase.rpc('get_monthly_vote_tallies', {
+        p_month_start: period.month_start
+      });
+      if (error) throw error;
+      return [period.month_start, Object.fromEntries((data || []).map((row) => [row.record_id, Number(row.vote_count)]))];
+    }));
+    voting.tallies = Object.fromEntries(tallyResults);
+
+    const currentPeriod = voting.periods.find((period) => period.month_start === getCurrentMonthKey());
+    if (currentPeriod) {
+      const { data, error } = await appState.supabase.rpc('get_my_monthly_vote', {
+        p_month_start: currentPeriod.month_start
+      });
+      if (error) throw error;
+      if (data) voting.userVotes[currentPeriod.month_start] = data;
+    }
+    voting.schemaReady = true;
+  } catch (error) {
+    console.error('Monthly voting data could not be loaded:', error);
+    voting.loadError = true;
   }
 }
 
@@ -849,6 +992,18 @@ function getRecordText(post, field) {
     return seededJapaneseText[post.id][field];
   }
   return post[field] || '';
+}
+
+function isSampleRecord(post) {
+  return SAMPLE_POST_IDS.has(post.id);
+}
+
+function mergeSampleRecords(databaseRecords) {
+  const merged = new Map(seedData.map((post) => [post.id, { ...post }]));
+  databaseRecords.forEach((post) => {
+    if (!isSampleRecord(post)) merged.set(post.id, post);
+  });
+  return [...merged.values()];
 }
 
 function getRecordImage(post) {
@@ -949,8 +1104,12 @@ function setActiveView(view) {
 
 function renderHome() {
   const container = document.getElementById('featuredGrid');
-  const recent = [...records].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 2);
-  container.innerHTML = recent.map((post) => `
+  const recentRecords = records
+    .filter((post) => !isSampleRecord(post))
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 2);
+  const featuredRecords = [...records.filter(isSampleRecord), ...recentRecords];
+  container.innerHTML = featuredRecords.map((post) => `
     <article class="feature-card archive-card" data-post-id="${post.id}">
       <div class="card-image">
         <img src="${escapeHtml(getRecordImage(post))}" alt="${escapeHtml(getRecordText(post, 'title'))}" />
@@ -958,6 +1117,7 @@ function renderHome() {
       </div>
       <div class="card-body">
         <div class="meta-row">
+          ${isSampleRecord(post) ? `<span class="sample-badge">${getText('sampleRecord')}</span>` : ''}
           <span class="location">📍 ${escapeHtml(getRecordText(post, 'region'))}</span>
         </div>
         <h3 class="card-title">${escapeHtml(getRecordText(post, 'title'))}</h3>
@@ -967,13 +1127,15 @@ function renderHome() {
           <span>·</span>
           <span>${formatDate(post.createdAt)}</span>
         </div>
-        <div class="card-actions">
-          <div class="action-group">
-            <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${getText('likeBtn')} ${post.likes}</button>
-            <button class="action-btn open-detail" type="button" data-post-id="${post.id}"><span class="icon">💬</span> ${post.comments.length}</button>
-          </div>
-          <button class="save-btn" type="button" data-post-id="${post.id}">${getText('viewMore')}</button>
-        </div>
+        ${isSampleRecord(post)
+          ? `<div class="card-actions"><button class="save-btn open-detail" type="button" data-post-id="${post.id}">${getText('viewMore')}</button></div>`
+          : `<div class="card-actions">
+              <div class="action-group">
+                <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${getText('likeBtn')} ${post.likes}</button>
+                <button class="action-btn open-detail" type="button" data-post-id="${post.id}"><span class="icon">💬</span> ${post.comments.length}</button>
+              </div>
+              <button class="save-btn" type="button" data-post-id="${post.id}">${getText('viewMore')}</button>
+            </div>`}
       </div>
     </article>
   `).join('');
@@ -999,6 +1161,7 @@ function renderArchive() {
       </div>
       <div class="card-body">
         <div class="meta-row">
+          ${isSampleRecord(post) ? `<span class="sample-badge">${getText('sampleRecord')}</span>` : ''}
           <span class="location">📍 ${escapeHtml(getRecordText(post, 'region'))}</span>
         </div>
         <h3 class="card-title">${escapeHtml(getRecordText(post, 'title'))}</h3>
@@ -1008,13 +1171,15 @@ function renderArchive() {
           <span>·</span>
           <span>${formatDate(post.createdAt)}</span>
         </div>
-        <div class="card-actions">
-          <div class="action-group">
-            <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${post.likes}</button>
-            <button class="action-btn open-detail" type="button" data-post-id="${post.id}"><span class="icon">💬</span> ${post.comments.length}</button>
-          </div>
-          <button class="save-btn open-detail" type="button" data-post-id="${post.id}">${getText('viewMore')}</button>
-        </div>
+        ${isSampleRecord(post)
+          ? `<div class="card-actions"><button class="save-btn open-detail" type="button" data-post-id="${post.id}">${getText('viewMore')}</button></div>`
+          : `<div class="card-actions">
+              <div class="action-group">
+                <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${post.likes}</button>
+                <button class="action-btn open-detail" type="button" data-post-id="${post.id}"><span class="icon">💬</span> ${post.comments.length}</button>
+              </div>
+              <button class="save-btn open-detail" type="button" data-post-id="${post.id}">${getText('viewMore')}</button>
+            </div>`}
       </div>
     </article>
   `).join('');
@@ -1050,7 +1215,7 @@ function bindCardActions() {
 
 async function toggleLike(postId) {
   const target = records.find((item) => item.id === postId);
-  if (!target) return;
+  if (!target || isSampleRecord(target)) return;
   if (appState.backendMode === 'remote') {
     const alreadyLiked = appState.likedRecordIds.has(postId);
     try {
@@ -1084,36 +1249,180 @@ async function toggleLike(postId) {
 
 function renderMonthly() {
   const container = document.getElementById('monthlyGrid');
-  const months = {};
+  const archive = document.getElementById('monthlyArchiveGrid');
+  const status = document.getElementById('monthlyStatus');
+  const winnerContainer = document.getElementById('monthlyWinner');
+  if (!container || !archive || !status || !winnerContainer) return;
 
-  records.forEach((item) => {
-    const month = new Date(item.createdAt).toISOString().slice(0, 7);
-    if (!months[month]) months[month] = [];
-    months[month].push(item);
+  const monthStart = getCurrentMonthKey();
+  const period = appState.monthlyVoting.periods.find((item) => item.month_start === monthStart);
+  const now = Date.now();
+  const isOpen = Boolean(period
+    && !period.finalized_at
+    && now >= new Date(period.opens_at).getTime()
+    && now < new Date(period.closes_at).getTime());
+  const hasVoted = Boolean(period && appState.monthlyVoting.userVotes[monthStart]);
+  const dbReady = appState.backendMode === 'remote' && appState.monthlyVoting.schemaReady;
+  const tallies = period && dbReady ? appState.monthlyVoting.tallies[monthStart] || {} : {};
+  const candidates = records.filter((post) => appState.publishedRecordIds.has(post.id)).sort((a, b) => {
+    const voteDifference = (tallies[b.id] || 0) - (tallies[a.id] || 0);
+    return voteDifference || new Date(a.createdAt) - new Date(b.createdAt);
   });
+  const rankedIds = new Map(candidates.map((post, index) => [post.id, index + 1]));
 
-  const entries = Object.entries(months).reverse().slice(0, 4);
+  let statusMessage = getText('monthlyNoPeriod');
+  if (appState.backendMode !== 'remote') statusMessage = getText('monthlyLocalNotice');
+  else if (appState.monthlyVoting.loadError) statusMessage = getText('monthlySchemaNotice');
+  else if (period?.finalized_at) statusMessage = getText('monthlyFinalized');
+  else if (isOpen) {
+    const closingDate = new Intl.DateTimeFormat(appState.lang === 'ja' ? 'ja-JP' : 'ko-KR', {
+      dateStyle: 'medium',
+      timeZone: 'Asia/Seoul'
+    }).format(new Date(period.closes_at));
+    statusMessage = getText('monthlyVotingOpen').replace('{end}', closingDate);
+  } else if (period && now >= new Date(period.closes_at).getTime()) statusMessage = getText('monthlyVotingClosed');
+  else if (period) statusMessage = getText('monthlyVotingNotOpen');
 
-  if (!entries.length) {
-    container.innerHTML = `<div class="empty-state">${getText('latestEmpty')}</div>`;
+  status.innerHTML = `<p>${escapeHtml(getText('monthlyCommunityNotice'))}</p><p>${escapeHtml(statusMessage)}</p>`;
+
+  const currentWinner = period?.finalized_at
+    ? candidates.find((post) => post.id === period.selected_record_id)
+    : null;
+  winnerContainer.innerHTML = currentWinner
+    ? `<article class="monthly-winner-card">
+        <img src="${escapeHtml(getRecordImage(currentWinner))}" alt="${escapeHtml(getRecordText(currentWinner, 'title'))}" />
+        <div>
+          <span class="month-label">${escapeHtml(getText('monthlySelected'))} · ${escapeHtml(formatMonth(monthStart.slice(0, 7)))}</span>
+          <h3>${escapeHtml(getRecordText(currentWinner, 'title'))}</h3>
+          <p>${escapeHtml(getRecordText(currentWinner, 'content'))}</p>
+          <span class="monthly-final-votes">${escapeHtml(getText('monthlyFinalVotes'))}: ${Number(tallies[currentWinner.id] || 0).toLocaleString(appState.lang === 'ja' ? 'ja-JP' : 'ko-KR')} ${escapeHtml(getText('monthlyVotes'))}</span>
+          <button class="secondary-btn monthly-open-record" type="button" data-post-id="${escapeHtml(currentWinner.id)}">${escapeHtml(getText('monthlyOpenRecord'))}</button>
+        </div>
+      </article>`
+    : '';
+
+  if (!candidates.length) {
+    container.innerHTML = `<div class="empty-state">${escapeHtml(getText('monthlyNoCandidates'))}</div>`;
+  } else {
+    container.innerHTML = candidates.map((post) => {
+      const selectedByUser = period && appState.monthlyVoting.userVotes[monthStart] === post.id;
+      const voteButtonEnabled = isOpen && dbReady && !hasVoted && !appState.monthlyVoting.submitting;
+      let buttonText = getText('monthlyVote');
+      if (!dbReady) buttonText = getText('monthlyVoteUnavailable');
+      else if (appState.monthlyVoting.submitting) buttonText = getText('monthlyVoteInProgress');
+      else if (hasVoted) buttonText = selectedByUser ? getText('monthlyVoted') : getText('monthlyVoteDone');
+      else if (!period) buttonText = getText('monthlyVoteUnavailable');
+      else if (period.finalized_at || now >= new Date(period.closes_at).getTime()) buttonText = getText('monthlyVoteClosed');
+      else if (!isOpen) buttonText = getText('monthlyVoteNotOpen');
+
+      const reasons = ['locality', 'community', 'everyday'].map((criterion) => {
+        const note = post[`${criterion}Notes`];
+        return `<div class="monthly-criterion ${criterion}">
+          <strong>${escapeHtml(getCriterionLabel(criterion))}</strong>
+          <p>${escapeHtml(note || getText('monthlyNoReason'))}</p>
+        </div>`;
+      }).join('');
+      const voteInfo = dbReady && period
+        ? `<span class="monthly-vote-count">${Number(tallies[post.id] || 0).toLocaleString(appState.lang === 'ja' ? 'ja-JP' : 'ko-KR')} ${escapeHtml(getText('monthlyVotes'))}</span>
+          <span class="monthly-rank">${escapeHtml(String(rankedIds.get(post.id)))}${escapeHtml(getText('monthlyRank'))}</span>`
+        : `<span class="monthly-vote-count">${escapeHtml(getText('monthlyVotesUnavailable'))}</span>`;
+
+      return `<article class="monthly-vote-card" data-post-id="${escapeHtml(post.id)}">
+        <button class="monthly-record-open" type="button" data-post-id="${escapeHtml(post.id)}" aria-label="${escapeHtml(getText('monthlyOpenRecord'))}: ${escapeHtml(getRecordText(post, 'title'))}">
+          <img src="${escapeHtml(getRecordImage(post))}" alt="${escapeHtml(getRecordText(post, 'title'))}" />
+          <span>${escapeHtml(getText('monthlyOpenRecord'))}</span>
+        </button>
+        <div class="monthly-vote-body">
+          <div class="monthly-vote-meta"><span>${escapeHtml(getCountryLabel(post.country))}</span><span>📍 ${escapeHtml(post.locationLabel || getRecordText(post, 'region'))}</span></div>
+          <button class="monthly-record-title monthly-open-record" type="button" data-post-id="${escapeHtml(post.id)}">${escapeHtml(getRecordText(post, 'title'))}</button>
+          <div class="byline"><span>${escapeHtml(getText('writerLabel'))}: ${escapeHtml(getRecordText(post, 'nickname'))}</span><span>·</span><span>${formatDate(post.recordDate || post.createdAt)}</span></div>
+          <p class="monthly-description">${escapeHtml(post.descriptionWhat || getRecordText(post, 'content'))}</p>
+          <div class="monthly-criteria-list">${reasons}</div>
+          <div class="monthly-vote-footer">
+            <div class="monthly-tally">${voteInfo}</div>
+            <button class="primary-btn monthly-vote-btn" type="button" data-month="${escapeHtml(monthStart)}" data-post-id="${escapeHtml(post.id)}" ${voteButtonEnabled ? '' : 'disabled'}>${escapeHtml(buttonText)}</button>
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+
+  const archivedPeriods = appState.monthlyVoting.periods.filter((item) => item.finalized_at);
+  archive.innerHTML = archivedPeriods.length
+    ? archivedPeriods.map((archivedPeriod) => {
+      const selected = records.find((post) => post.id === archivedPeriod.selected_record_id
+        && appState.publishedRecordIds.has(post.id));
+      if (!selected) return '';
+      const archivedTallies = appState.monthlyVoting.tallies[archivedPeriod.month_start] || {};
+      return `<article class="monthly-archive-card">
+        <span class="month-label">${escapeHtml(formatMonth(archivedPeriod.month_start.slice(0, 7)))}</span>
+        <button class="monthly-record-open monthly-archive-open" type="button" data-post-id="${escapeHtml(selected.id)}">
+          <img src="${escapeHtml(getRecordImage(selected))}" alt="${escapeHtml(getRecordText(selected, 'title'))}" />
+          <span>${escapeHtml(getText('monthlySelected'))}</span>
+        </button>
+        <div class="monthly-archive-copy">
+          <h4>${escapeHtml(getRecordText(selected, 'title'))}</h4>
+          <p>${escapeHtml(getRecordText(selected, 'region'))}</p>
+          <span>${escapeHtml(getText('monthlyFinalVotes'))}: ${Number(archivedTallies[selected.id] || 0).toLocaleString(appState.lang === 'ja' ? 'ja-JP' : 'ko-KR')} ${escapeHtml(getText('monthlyVotes'))}</span>
+        </div>
+      </article>`;
+    }).join('') || `<div class="empty-state">${escapeHtml(getText('monthlyNoArchive'))}</div>`
+    : `<div class="empty-state">${escapeHtml(getText('monthlyNoArchive'))}</div>`;
+
+  container.querySelectorAll('.monthly-open-record').forEach((button) => {
+    button.addEventListener('click', () => openDetail(button.dataset.postId));
+  });
+  container.querySelectorAll('.monthly-vote-card').forEach((card) => {
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('button')) return;
+      openDetail(card.dataset.postId);
+    });
+  });
+  archive.querySelectorAll('.monthly-archive-open').forEach((button) => {
+    button.addEventListener('click', () => openDetail(button.dataset.postId));
+  });
+  container.querySelectorAll('.monthly-vote-btn').forEach((button) => {
+    button.addEventListener('click', () => castMonthlyVote(button.dataset.month, button.dataset.postId));
+  });
+  winnerContainer.querySelector('.monthly-open-record')?.addEventListener('click', (event) => {
+    openDetail(event.currentTarget.dataset.postId);
+  });
+}
+
+async function castMonthlyVote(monthStart, postId) {
+  const voting = appState.monthlyVoting;
+  if (appState.backendMode !== 'remote' || !voting.schemaReady || voting.submitting) return;
+  if (!appState.publishedRecordIds.has(postId)) return;
+  if (voting.userVotes[monthStart]) {
+    showNotice(getText('monthlyAlreadyVoted'), 'error');
     return;
   }
 
-  container.innerHTML = entries.map(([month, items]) => {
-    const highlight = items[0];
-    return `
-      <article class="monthly-card">
-        <span class="month-label">${escapeHtml(formatMonth(month))}</span>
-        <h3>${escapeHtml(getRecordText(highlight, 'title'))}</h3>
-        <p>${escapeHtml(getRecordText(highlight, 'content').slice(0, 140))}${getRecordText(highlight, 'content').length > 140 ? '…' : ''}</p>
-        <div class="byline">
-          <span>${escapeHtml(getRecordText(highlight, 'nickname'))}</span>
-          <span>·</span>
-          <span>${getCountryLabel(highlight.country)}</span>
-        </div>
-      </article>
-    `;
-  }).join('');
+  voting.submitting = true;
+  renderMonthly();
+  try {
+    const { error } = await appState.supabase.rpc('cast_monthly_vote', {
+      p_month_start: monthStart,
+      p_record_id: postId
+    });
+    if (error) {
+      if (error.code === '23505') {
+        await loadMonthlyVotingData();
+        showNotice(getText('monthlyAlreadyVoted'), 'error');
+        renderMonthly();
+        return;
+      }
+      throw error;
+    }
+    await loadMonthlyVotingData();
+    showNotice(getText('monthlyVoteSaved'));
+  } catch (error) {
+    console.error('Monthly vote could not be saved:', error);
+    showNotice(getText('monthlyVotingError'), 'error');
+  } finally {
+    voting.submitting = false;
+    renderMonthly();
+  }
 }
 
 function showMapFallback(message) {
@@ -1231,6 +1540,7 @@ function renderMap() {
       marker.bindPopup(`
         <div style="min-width:180px;">
           <img src="${escapeHtml(getRecordImage(post))}" alt="${escapeHtml(getRecordText(post, 'title'))}" style="width:100%;height:110px;object-fit:cover;border-radius:8px;margin-bottom:8px;" />
+          ${isSampleRecord(post) ? `<span class="sample-badge">${getText('sampleRecord')}</span><br>` : ''}
           <strong>${escapeHtml(getRecordText(post, 'title'))}</strong><br>
           <span>${escapeHtml(getRecordText(post, 'region'))}</span>
           <p style="margin:6px 0;max-height:3.2em;overflow:hidden;">${escapeHtml(getRecordText(post, 'content'))}</p>
@@ -1260,6 +1570,7 @@ function renderMap() {
     const entries = visiblePosts.length
       ? visiblePosts.map((post) => `
           <div class="map-entry" data-map-post-id="${post.id}">
+            ${isSampleRecord(post) ? `<span class="sample-badge">${getText('sampleRecord')}</span>` : ''}
             <h4>${escapeHtml(getRecordText(post, 'title'))}</h4>
             <p>${getCountryLabel(post.country)} · ${escapeHtml(getRecordText(post, 'region'))}</p>
             <button class="primary-btn" type="button" data-post-id="${post.id}">${getText('viewMore')}</button>
@@ -1290,7 +1601,7 @@ function renderMap() {
 function canEditRecord(post) {
   if (appState.backendMode === 'remote') return post.authorId === appState.userId;
   if (appState.backendMode !== 'local') return false;
-  return !seedData.some((seed) => seed.id === post.id);
+  return !isSampleRecord(post);
 }
 
 function openDetail(postId, preservedComment = '') {
@@ -1340,6 +1651,7 @@ function openDetail(postId, preservedComment = '') {
       <div>
         <h3 class="detail-title">${escapeHtml(getRecordText(post, 'title'))}</h3>
         <div class="detail-meta">
+          ${isSampleRecord(post) ? `<span class="sample-badge">${getText('sampleRecord')}</span>` : ''}
           <span>${getCountryLabel(post.country)}</span>
           <span>•</span>
           <span>${escapeHtml(getRecordText(post, 'region'))}</span>
@@ -1381,35 +1693,37 @@ function openDetail(postId, preservedComment = '') {
       <div class="detail-body">${escapeHtml(getRecordText(post, 'content'))}</div>
     </section>
 
-    <div class="detail-actions">
-      <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${getText('likeBtn')} ${post.likes}</button>
-      ${canEditRecord(post) ? `<button class="action-btn edit-record" type="button" data-post-id="${escapeHtml(post.id)}">${getText('editRecord')}</button>` : ''}
-    </div>
-
-    <div class="comment-list">
-      <h4>${getText('commentsTitle')}</h4>
-      ${post.comments.length ? post.comments.map((comment) => `
-        <div class="comment-item">
-          <strong>${escapeHtml(getCommentNickname(comment))}</strong>
-          <div>${escapeHtml(getCommentText(comment))}</div>
+    ${isSampleRecord(post)
+      ? `<div class="sample-readonly-note">${getText('sampleReadOnly')}</div>`
+      : `<div class="detail-actions">
+          <button class="action-btn like-post" type="button" data-post-id="${post.id}"><span class="icon">♥</span> ${getText('likeBtn')} ${post.likes}</button>
+          ${canEditRecord(post) ? `<button class="action-btn edit-record" type="button" data-post-id="${escapeHtml(post.id)}">${getText('editRecord')}</button>` : ''}
         </div>
-      `).join('') : `<div class="comment-item">${getText('noComments')}</div>`}
-    </div>
 
-    <div class="comment-form">
-      <input id="commentInput" type="text" placeholder="${getText('commentPlaceholder')}" maxlength="120" value="${escapeHtml(preservedComment)}" />
-      <button class="primary-btn" id="submitCommentBtn" type="button">${getText('commentSubmit')}</button>
-    </div>
+        <div class="comment-list">
+          <h4>${getText('commentsTitle')}</h4>
+          ${post.comments.length ? post.comments.map((comment) => `
+            <div class="comment-item">
+              <strong>${escapeHtml(getCommentNickname(comment))}</strong>
+              <div>${escapeHtml(getCommentText(comment))}</div>
+            </div>
+          `).join('') : `<div class="comment-item">${getText('noComments')}</div>`}
+        </div>
+
+        <div class="comment-form">
+          <input id="commentInput" type="text" placeholder="${getText('commentPlaceholder')}" maxlength="120" value="${escapeHtml(preservedComment)}" />
+          <button class="primary-btn" id="submitCommentBtn" type="button">${getText('commentSubmit')}</button>
+        </div>`}
   `;
 
   modal.classList.add('visible');
   modal.setAttribute('aria-hidden', 'false');
   renderDetailLocationMap(post);
 
-  const submitCommentBtn = document.getElementById('submitCommentBtn');
-  const commentInput = document.getElementById('commentInput');
+  const submitCommentBtn = content.querySelector('#submitCommentBtn');
+  const commentInput = content.querySelector('#commentInput');
 
-  submitCommentBtn.addEventListener('click', async () => {
+  submitCommentBtn?.addEventListener('click', async () => {
     const value = commentInput.value.trim();
     if (!value) return;
     const target = records.find((item) => item.id === postId);
@@ -2124,6 +2438,7 @@ async function handleFormSubmit(event) {
       } else {
         records.unshift(savedRecord);
       }
+      appState.publishedRecordIds.add(savedRecord.id);
       setStorageStatus(getText('backendRemoteStatus'), 'remote');
       showNotice(imageCleanupWarning
         ? getText('imageCleanupWarning')
