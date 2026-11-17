@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f0e7" />
+    <title>무명 | 로컬 데이터 백업</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f0e7;
+        --paper: #fffcf7;
+        --ink: #1e1b18;
+        --muted: #6b625d;
+        --line: rgba(46, 38, 31, 0.14);
+        --green: #204d3e;
+        --green-dark: #1f2d2b;
+        --warm: #c98d56;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 28px 16px 48px;
+        background: linear-gradient(180deg, #f8f3ed 0%, #efe4d2 100%);
+        color: var(--ink);
+        font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+        line-height: 1.65;
+      }
+
+      main {
+        width: min(860px, 100%);
+        margin: 0 auto;
+      }
+
+      .brand {
+        margin: 0;
+        font-family: "Shippori Mincho", "Batang", serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        letter-spacing: -0.06em;
+      }
+
+      .brand span {
+        margin-left: 8px;
+        font-size: 0.42em;
+        letter-spacing: 0.06em;
+      }
+
+      .kicker {
+        margin: 26px 0 4px;
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Shippori Mincho", "Batang", serif;
+        font-size: clamp(1.8rem, 4vw, 2.7rem);
+        line-height: 1.25;
+      }
+
+      .intro {
+        max-width: 700px;
+        margin: 12px 0 22px;
+        color: var(--muted);
+      }
+
+      .notice,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 252, 247, 0.88);
+        box-shadow: 0 18px 40px rgba(31, 28, 24, 0.06);
+      }
+
+      .notice {
+        margin: 0 0 18px;
+        padding: 16px 18px;
+        border-left: 4px solid var(--warm);
+        color: var(--muted);
+      }
+
+      .notice strong { color: var(--ink); }
+
+      .panel { padding: clamp(18px, 4vw, 28px); }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        gap: 12px;
+        margin: 0;
+      }
+
+      .stat {
+        min-height: 106px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: var(--paper);
+      }
+
+      .stat dt {
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+
+      .stat dd {
+        margin: 5px 0 0;
+        color: var(--green);
+        font-size: 1.7rem;
+        font-weight: 800;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      button {
+        min-height: 48px;
+        padding: 11px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button.primary {
+        border-color: var(--green-dark);
+        background: var(--green-dark);
+        color: #fff;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+
+      .status {
+        min-height: 1.7em;
+        margin: 14px 0 0;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+      }
+
+      .status[data-state="error"] { color: #9c342a; }
+      .status[data-state="success"] { color: var(--green); }
+
+      .details {
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .origin {
+        margin-top: 20px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.82rem;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 520px) {
+        body { padding: 18px 12px 32px; }
+        .actions { flex-direction: column; }
+        .actions button { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="brand">무명<span>無名</span></p>
+      <p class="kicker">MUMYEONG · LOCAL BACKUP</p>
+      <h1>기록과 사진을 안전하게 백업합니다</h1>
+      <p class="intro">
+        이 페이지는 현재 브라우저에 저장된 게시물과 IndexedDB 사진을 읽기만 합니다.
+        백업 JSON에는 게시물 원본 데이터와 이미지 Blob의 Base64 데이터가 포함됩니다.
+      </p>
+
+      <div class="notice">
+        <strong>읽기 전용 백업</strong><br />
+        게시물·사진을 수정하거나 삭제하지 않으며, Supabase 업로드나 로그인을 수행하지 않습니다.
+        큰 사진이 많으면 파일 생성에 시간이 걸리고 JSON 파일 용량이 커질 수 있습니다.
+      </div>
+
+      <section class="panel" aria-label="백업 데이터 현황">
+        <dl class="stats">
+          <div class="stat"><dt>전체 게시물</dt><dd id="recordCount">—</dd></div>
+          <div class="stat"><dt>샘플 게시물</dt><dd id="sampleCount">—</dd></div>
+          <div class="stat"><dt>실제 작성 게시물</dt><dd id="userRecordCount">—</dd></div>
+          <div class="stat"><dt>분류 불확실</dt><dd id="unknownRecordCount">—</dd></div>
+          <div class="stat"><dt>IndexedDB 사진 파일</dt><dd id="imageCount">—</dd></div>
+          <div class="stat"><dt>게시물과 연결되지 않은 사진</dt><dd id="unlinkedImageCount">—</dd></div>
+          <div class="stat"><dt>존재하지 않는 사진 참조</dt><dd id="missingImageCount">—</dd></div>
+        </dl>
+
+        <p id="backupStatus" class="status" role="status" aria-live="polite">저장 데이터를 확인하고 있습니다…</p>
+        <p id="backupDetails" class="details"></p>
+        <div class="actions">
+          <button id="rescanButton" type="button">다시 확인</button>
+          <button id="downloadButton" class="primary" type="button" disabled>JSON 백업 다운로드</button>
+        </div>
+        <p class="origin">
+          읽는 출처: <code id="originValue"></code><br />
+          홈페이지와 이 페이지를 같은 브라우저·같은 출처(origin)에서 열어야 합니다.
+          출처는 프로토콜, 호스트, 포트가 모두 같아야 합니다.
+        </p>
+      </section>
+    </main>
+    <script src="local-data-backup.js"></script>
+  </body>
+</html>
